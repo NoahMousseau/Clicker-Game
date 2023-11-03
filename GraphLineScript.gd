@@ -1,14 +1,10 @@
 extends Line2D
 
-var xVal = 0
-var customPoints = PackedVector2Array()
-var updateTimer = 0
-
 func _ready():
 	#Setup for graph
 	self.default_color = Color(1, 0, 0)
 	self.width = 2
-	customPoints.append(Vector2(xVal, GlobalScript.cashValue))
+	GlobalScript.customPoints.append(Vector2(GlobalScript.xVal, GlobalScript.cashValue))
 	update_line_graph()
 	set_process(true)
 	#Setup for labels
@@ -18,28 +14,33 @@ func _ready():
 	$XAxisLabel.text = xAxisLabelString
 
 func _process(delta):
-	updateTimer += delta
+	GlobalScript.updateTimer += delta
 
 	#Forces the graph to update only once per second
-	if updateTimer >= 1.0:
-		xVal += 10
+	if GlobalScript.updateTimer >= 1.0:
+		GlobalScript.xVal += 10
 		#Clears graph if x-axis value (time) exceeds 500
-		if xVal > GlobalScript.xRange:
-			xVal = 0
-			customPoints.clear()
+		if GlobalScript.xVal > GlobalScript.xRange:
+			GlobalScript.xVal = 0
+			GlobalScript.customPoints.clear()
 		
 		#Increases y-axis label to whatever highest cashValue has been
 		if GlobalScript.cashValue > GlobalScript.yRange:
-			GlobalScript.yRange = GlobalScript.cashValue
+			GlobalScript.multiplicator += 1.0
+			GlobalScript.yRange = GlobalScript.yRange * 2
 			var yAxisLabelString = "%.2f" % GlobalScript.yRange
 			$YAxisLabel.text = yAxisLabelString
-			customPoints.append(Vector2(xVal, -(GlobalScript.cashValue)))
+			GlobalScript.customPoints.clear()
 			update_line_graph()
+			GlobalScript.xVal = 0
+			GlobalScript.customPoints.append(Vector2(GlobalScript.xVal, -(GlobalScript.cashValue / (2 ** GlobalScript.multiplicator))))
+			update_line_graph()
+		#Normal update process for graph, main process except for when cashValue exceeds y-axis label
 		else: if GlobalScript.cashValue <= GlobalScript.yRange:
-			customPoints.append(Vector2(xVal, -(GlobalScript.cashValue)))
+			GlobalScript.customPoints.append(Vector2(GlobalScript.xVal, -(GlobalScript.cashValue / (2 ** GlobalScript.multiplicator))))
 			update_line_graph()
 
-		updateTimer = 0
+		GlobalScript.updateTimer = 0
 
 func update_line_graph():
-	self.set_points(customPoints)
+	self.set_points(GlobalScript.customPoints)

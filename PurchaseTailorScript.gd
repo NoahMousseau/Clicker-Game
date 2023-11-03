@@ -1,9 +1,11 @@
 extends Button
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$BlacksmithAmount.text = str(GlobalScript.blacksmithAmount)
+	$PurchaseTailorAmount.text = str(GlobalScript.tailorAmount)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$BlacksmithAmount.text = str(GlobalScript.blacksmithAmount)
+	$PurchaseTailorAmount.text = str(GlobalScript.tailorAmount)
