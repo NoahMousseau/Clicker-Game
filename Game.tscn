@@ -1,0 +1,2984 @@
+[gd_scene load_steps=39 format=3 uid="uid://cw0m7sva2cmr4"]
+
+[ext_resource type="Texture2D" uid="uid://dmchx3t8t61in" path="res://pexels-dan-cristian-pădureț-5102226.jpg" id="1_ibgah"]
+[ext_resource type="Script" path="res://MainGameControlScript.gd" id="1_yg3y0"]
+[ext_resource type="FontFile" uid="uid://bse6uykbbfbvs" path="res://Freedom-10eM.ttf" id="2_gp1vu"]
+[ext_resource type="Script" path="res://CashDisplayScript.gd" id="2_in0kp"]
+[ext_resource type="Script" path="res://IncreaseCashScript.gd" id="4_wsyi3"]
+[ext_resource type="Script" path="res://ConstCashGainScript.gd" id="5_rwde4"]
+[ext_resource type="Script" path="res://FPScounterLabelScript.gd" id="7_vkbuf"]
+[ext_resource type="Script" path="res://CashMultiplierIncreaserScript.gd" id="8_687mi"]
+[ext_resource type="Script" path="res://GraphTestNodeScript.gd" id="9_yx3ir"]
+[ext_resource type="Script" path="res://GraphLineScript.gd" id="10_vgyvw"]
+[ext_resource type="Texture2D" uid="uid://41r8a0v8t877" path="res://Test Tooltip Icon.png" id="11_v3gqx"]
+[ext_resource type="Script" path="res://MainNotificationPanelScript.gd" id="12_bf4sl"]
+[ext_resource type="Script" path="res://ShopControlScript.gd" id="13_efjxh"]
+[ext_resource type="Script" path="res://PurchaseBlacksmithScript.gd" id="13_r56pe"]
+[ext_resource type="Script" path="res://PurchasePrintingPressScript.gd" id="14_mxrmd"]
+[ext_resource type="Script" path="res://PurchaseTailorScript.gd" id="16_klx5x"]
+[ext_resource type="Script" path="res://StockMarketControlScript.gd" id="17_anxuu"]
+[ext_resource type="Script" path="res://GroupStocksScript.gd" id="18_hhaod"]
+[ext_resource type="Script" path="res://ArrowControlScript.gd" id="18_jb43l"]
+[ext_resource type="Script" path="res://StockMarketNotificationDisplayPanelScript.gd" id="18_sevyd"]
+[ext_resource type="Texture2D" uid="uid://p0yufg4eyuti" path="res://Paper.PNG" id="18_w3el2"]
+[ext_resource type="Texture2D" uid="uid://csbpbw0l32t7m" path="res://NeutralUpArrow.png" id="19_pnepw"]
+[ext_resource type="Texture2D" uid="uid://dpt282vq75nbo" path="res://NeutralDownArrow.png" id="20_du1ry"]
+[ext_resource type="Script" path="res://Stock1GraphNodeScript.gd" id="20_m73wj"]
+[ext_resource type="Script" path="res://Stock1GraphLineScript.gd" id="21_cbpbc"]
+[ext_resource type="Texture2D" uid="uid://relpm6j5nne8" path="res://ActiveUpArrow.png" id="21_srifw"]
+[ext_resource type="Script" path="res://Stock2GraphNodeScript.gd" id="22_0vxw0"]
+[ext_resource type="Texture2D" uid="uid://dupn4kgu8f8e6" path="res://ActiveDownArrow.png" id="22_mrkh8"]
+[ext_resource type="Script" path="res://Stock2GraphLineScript.gd" id="23_jeu7q"]
+[ext_resource type="Texture2D" uid="uid://dvyo08y46s4v8" path="res://GoodUpArrow.png" id="23_x50eq"]
+[ext_resource type="Texture2D" uid="uid://dy7epmic5pvxv" path="res://StockMarketNotificationOutline.png" id="23_yt62g"]
+[ext_resource type="Texture2D" uid="uid://cahg0jmnb6aww" path="res://BadDownArrow.png" id="24_371qs"]
+[ext_resource type="Script" path="res://Stock3GraphNodeScript.gd" id="24_t2pdl"]
+[ext_resource type="Script" path="res://Stock3GraphLineScript.gd" id="25_omb0j"]
+[ext_resource type="Script" path="res://Stock4GraphNodeScript.gd" id="26_xypv7"]
+[ext_resource type="Script" path="res://Stock4GraphLineScript.gd" id="27_yujbh"]
+[ext_resource type="Script" path="res://Stock5GraphNodeScript.gd" id="28_mkhl4"]
+[ext_resource type="Script" path="res://Stock5GraphLineScript.gd" id="29_nbyt7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yg3y0")
+
+[node name="GameControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameBackground" type="TextureRect" parent="GameControl"]
+layout_mode = 0
+offset_left = -339.0
+offset_top = -332.0
+offset_right = 2372.0
+offset_bottom = 1350.0
+texture = ExtResource("1_ibgah")
+expand_mode = 1
+
+[node name="GameCamera" type="Camera2D" parent="GameControl"]
+offset = Vector2(960, 540)
+
+[node name="CashDisplay" type="Panel" parent="GameControl"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 16.0
+offset_right = 1893.0
+offset_bottom = 136.0
+script = ExtResource("2_in0kp")
+
+[node name="CashTotalLabel" type="Label" parent="GameControl/CashDisplay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 216.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash Total:"
+
+[node name="MoneyLabel" type="Label" parent="GameControl/CashDisplay"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 1612.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="IncreaseCash" type="Button" parent="GameControl"]
+layout_mode = 0
+offset_left = 1723.0
+offset_top = 271.0
+offset_right = 1850.0
+offset_bottom = 348.0
+script = ExtResource("4_wsyi3")
+
+[node name="IncreaseCashLabel" type="Label" parent="GameControl/IncreaseCash"]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConstCashGain" type="Panel" parent="GameControl"]
+layout_mode = 0
+offset_left = 1680.0
+offset_top = 150.0
+offset_right = 1893.0
+offset_bottom = 261.0
+script = ExtResource("5_rwde4")
+
+[node name="ConstCashGainLabel" type="Label" parent="GameControl/ConstCashGain"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 213.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleConstCashGainLabel" type="Label" parent="GameControl/ConstCashGain"]
+layout_mode = 0
+offset_right = 213.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 20
+text = "Cash gain per sec"
+horizontal_alignment = 1
+
+[node name="FPScounter" type="Panel" parent="GameControl"]
+layout_mode = 0
+offset_left = 1482.0
+offset_top = 150.0
+offset_right = 1668.0
+offset_bottom = 260.0
+
+[node name="FPScounterLabel" type="Label" parent="GameControl/FPScounter"]
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_vkbuf")
+
+[node name="CashMultiplierIncreaser" type="Button" parent="GameControl"]
+layout_mode = 0
+offset_left = 1511.0
+offset_top = 838.0
+offset_right = 1898.0
+offset_bottom = 1037.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("8_687mi")
+
+[node name="CashMultiplierLabel" type="Label" parent="GameControl/CashMultiplierIncreaser"]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 387.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+
+[node name="CashMultiplierTitleLabel" type="Label" parent="GameControl/CashMultiplierIncreaser"]
+layout_mode = 0
+offset_right = 387.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Increase Manual
+Cash Multiplier
+$100"
+horizontal_alignment = 1
+
+[node name="GraphTest" type="Panel" parent="GameControl"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 425.0
+offset_right = 1151.0
+offset_bottom = 1035.0
+
+[node name="GraphTestNode" type="Node2D" parent="GameControl/GraphTest"]
+position = Vector2(64, 554)
+script = ExtResource("9_yx3ir")
+
+[node name="GraphTooltipPanel" type="Panel" parent="GameControl/GraphTest/GraphTestNode"]
+visible = false
+offset_left = 811.0
+offset_top = -707.0
+offset_right = 1042.0
+offset_bottom = -561.0
+
+[node name="GraphTooltipLabel" type="Label" parent="GameControl/GraphTest/GraphTestNode/GraphTooltipPanel"]
+layout_mode = 0
+offset_right = 231.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 20
+text = "This graph displays
+the income over
+time for the past 
+1 minute and
+40 seconds"
+
+[node name="GraphLine" type="Line2D" parent="GameControl/GraphTest/GraphTestNode"]
+points = PackedVector2Array(0, 0)
+script = ExtResource("10_vgyvw")
+
+[node name="YAxisLabel" type="Label" parent="GameControl/GraphTest/GraphTestNode/GraphLine"]
+offset_left = -51.0
+offset_top = -533.0
+offset_right = -11.0
+offset_bottom = -510.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="XAxisLabel" type="Label" parent="GameControl/GraphTest/GraphTestNode/GraphLine"]
+offset_left = 988.0
+offset_top = 22.0
+offset_right = 1028.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="OriginLabel" type="Label" parent="GameControl/GraphTest"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 562.0
+offset_right = 77.0
+offset_bottom = 606.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "(0 ,0)"
+
+[node name="GraphTooltip" type="TextureButton" parent="GameControl/GraphTest"]
+layout_mode = 0
+offset_left = 1053.0
+offset_top = 5.0
+offset_right = 1103.0
+offset_bottom = 55.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="GoToShopMenu" type="Button" parent="GameControl"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 16.0
+offset_right = 244.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to 
+Shop Menu"
+
+[node name="GoToStockMarket" type="Button" parent="GameControl"]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 142.0
+offset_right = 244.0
+offset_bottom = 264.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock 
+market"
+
+[node name="MainNotificationPanel" type="Panel" parent="GameControl"]
+visible = false
+layout_mode = 0
+offset_left = 725.0
+offset_top = 151.0
+offset_right = 1465.0
+offset_bottom = 259.0
+script = ExtResource("12_bf4sl")
+
+[node name="MainNotificationLabel" type="Label" parent="GameControl/MainNotificationPanel"]
+layout_mode = 0
+offset_right = 688.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
+
+[node name="MainNotificationButton" type="TextureButton" parent="GameControl/MainNotificationPanel"]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 1.0
+offset_right = 739.0
+offset_bottom = 51.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="MainCloseNotification" type="Panel" parent="GameControl/MainNotificationPanel/MainNotificationButton"]
+visible = false
+layout_mode = 0
+offset_left = -51.0
+offset_top = 111.0
+offset_right = 51.0
+offset_bottom = 144.0
+
+[node name="MainCloseNotificationLabel" type="Label" parent="GameControl/MainNotificationPanel/MainNotificationButton/MainCloseNotification"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Close"
+
+[node name="ShopControl" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 2627.0
+offset_top = -1.0
+offset_right = 2664.0
+offset_bottom = 34.0
+script = ExtResource("13_efjxh")
+
+[node name="ShopBackground" type="Sprite2D" parent="ShopControl"]
+position = Vector2(1085, 510.5)
+scale = Vector2(0.521259, 0.46466)
+texture = ExtResource("1_ibgah")
+
+[node name="ShopCamera" type="Camera2D" parent="ShopControl"]
+position = Vector2(-36, -24)
+offset = Vector2(1100, 565)
+
+[node name="PurchaseBlacksmith" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 1595.0
+offset_top = 820.0
+offset_right = 1984.0
+offset_bottom = 1013.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Purchase BlackSmith
+$5
+Gain +$1 per sec
+Owned:"
+script = ExtResource("13_r56pe")
+
+[node name="BlacksmithAmount" type="Label" parent="ShopControl/PurchaseBlacksmith"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 198.0
+offset_right = 251.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlacksmithCashGain" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 1595.0
+offset_top = 820.0
+offset_right = 1984.0
+offset_bottom = 1013.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Utilize blacksmiths
+Gain $10"
+
+[node name="PurchasePrintingPress" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 1206.0
+offset_top = 820.0
+offset_right = 1575.0
+offset_bottom = 1013.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Purchase Printing
+Press
+$50
+Gain +$2 per sec
+Owned:"
+script = ExtResource("14_mxrmd")
+
+[node name="PrintingPressAmount" type="Label" parent="ShopControl/PurchasePrintingPress"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 197.0
+offset_right = 234.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[node name="PrintingPressCashGain" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 1206.0
+offset_top = 820.0
+offset_right = 1575.0
+offset_bottom = 1013.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Utilize Printing
+Presses
+Gain $20"
+
+[node name="PurchaseTailor" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_right = 0.108
+offset_left = 802.004
+offset_top = 820.0
+offset_right = 1179.0
+offset_bottom = 1013.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Purchase Tailor
+$100
+Gain +$4 per sec
+Owned"
+script = ExtResource("16_klx5x")
+
+[node name="PurchaseTailorAmount" type="Label" parent="ShopControl/PurchaseTailor"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 198.0
+offset_right = 227.0
+offset_bottom = 253.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[node name="TailorCashGain" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 806.0
+offset_top = 820.0
+offset_right = 1183.0
+offset_bottom = 1013.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Utilize Tailors
+Gain $40"
+
+[node name="GoToGameMenu" type="Button" parent="ShopControl"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 18.0
+offset_right = 350.0
+offset_bottom = 138.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to 
+Game Menu"
+
+[node name="GoToStockMarket" type="Button" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 126.0
+offset_top = 151.0
+offset_right = 351.0
+offset_bottom = 267.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock
+market"
+
+[node name="ShopCashDisplay" type="Panel" parent="ShopControl"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 18.0
+offset_right = 2004.0
+offset_bottom = 137.0
+
+[node name="ShopCashTotalLabel" type="Label" parent="ShopControl/ShopCashDisplay"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 215.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash Total:"
+
+[node name="ShopMoneyLabel" type="Label" parent="ShopControl/ShopCashDisplay"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 47.0
+offset_right = 1618.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="ShopNotificationPanel" type="Panel" parent="ShopControl"]
+visible = false
+layout_mode = 0
+offset_left = 373.0
+offset_top = 150.0
+offset_right = 799.0
+offset_bottom = 268.0
+
+[node name="ShopNotificationLabel" type="Label" parent="ShopControl/ShopNotificationPanel"]
+layout_mode = 0
+offset_right = 370.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
+
+[node name="ShopNotificationButton" type="TextureButton" parent="ShopControl/ShopNotificationPanel"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 3.0
+offset_right = 423.0
+offset_bottom = 53.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="ShopCloseNotification" type="Panel" parent="ShopControl/ShopNotificationPanel/ShopNotificationButton"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = -3.0
+offset_right = 158.0
+offset_bottom = 30.0
+
+[node name="ShopCloseNotificationLabel" type="Label" parent="ShopControl/ShopNotificationPanel/ShopNotificationButton/ShopCloseNotification"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Close"
+
+[node name="StockMarketControl" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 1498.0
+offset_right = 25.0
+offset_bottom = 1522.0
+script = ExtResource("17_anxuu")
+
+[node name="StockMarketBackground" type="Sprite2D" parent="StockMarketControl"]
+position = Vector2(1053, 557)
+scale = Vector2(0.511872, 0.46397)
+texture = ExtResource("1_ibgah")
+
+[node name="StockMarketCamera" type="Camera2D" parent="StockMarketControl"]
+offset = Vector2(961, 600)
+
+[node name="GoToGameMenu" type="Button" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 73.0
+offset_right = 217.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "go to
+Game menu"
+
+[node name="GoToShopMenu" type="Button" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 204.0
+offset_right = 237.0
+offset_bottom = 318.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+Shop Menu"
+
+[node name="ArrowControl" type="Control" parent="StockMarketControl"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_jb43l")
+
+[node name="GirnnArrowControl" type="Control" parent="StockMarketControl/ArrowControl"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1559.0
+offset_top = 768.0
+offset_right = 1599.0
+offset_bottom = 808.0
+
+[node name="GirnnNeutralUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/GirnnArrowControl"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -119.0
+offset_right = 258.0
+offset_bottom = -7.0
+texture = ExtResource("19_pnepw")
+expand_mode = 1
+
+[node name="GirnnNeutralDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/GirnnArrowControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 330.0
+offset_bottom = -7.0
+texture = ExtResource("20_du1ry")
+expand_mode = 1
+
+[node name="GirnnActiveUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/GirnnArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 186.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = -5.0
+texture = ExtResource("21_srifw")
+expand_mode = 1
+
+[node name="GirnnActiveDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/GirnnArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = -117.0
+offset_right = 330.0
+offset_bottom = -9.0
+texture = ExtResource("22_mrkh8")
+expand_mode = 1
+
+[node name="GirnnEventGoodArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/GirnnArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = -119.0
+offset_right = 259.0
+offset_bottom = -6.0
+texture = ExtResource("23_x50eq")
+expand_mode = 1
+
+[node name="GirnnEventBadArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/GirnnArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 329.0
+offset_bottom = -8.0
+texture = ExtResource("24_371qs")
+expand_mode = 1
+
+[node name="EbkalArrowControl" type="Control" parent="StockMarketControl/ArrowControl"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1176.0
+offset_top = 769.0
+offset_right = 1216.0
+offset_bottom = 809.0
+
+[node name="EbkalNeutralUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/EbkalArrowControl"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -119.0
+offset_right = 258.0
+offset_bottom = -7.0
+texture = ExtResource("19_pnepw")
+expand_mode = 1
+
+[node name="EbkalNeutralDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/EbkalArrowControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 330.0
+offset_bottom = -7.0
+texture = ExtResource("20_du1ry")
+expand_mode = 1
+
+[node name="EbkalActiveUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/EbkalArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 186.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = -5.0
+texture = ExtResource("21_srifw")
+expand_mode = 1
+
+[node name="EbkalActiveDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/EbkalArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = -117.0
+offset_right = 330.0
+offset_bottom = -9.0
+texture = ExtResource("22_mrkh8")
+expand_mode = 1
+
+[node name="EbkalEventGoodArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/EbkalArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = -119.0
+offset_right = 259.0
+offset_bottom = -6.0
+texture = ExtResource("23_x50eq")
+expand_mode = 1
+
+[node name="EbkalEventBadArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/EbkalArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 329.0
+offset_bottom = -8.0
+texture = ExtResource("24_371qs")
+expand_mode = 1
+
+[node name="CharnelArrowControl" type="Control" parent="StockMarketControl/ArrowControl"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 796.0
+offset_top = 769.0
+offset_right = 836.0
+offset_bottom = 809.0
+
+[node name="CharnelNeutralUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CharnelArrowControl"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -119.0
+offset_right = 258.0
+offset_bottom = -7.0
+texture = ExtResource("19_pnepw")
+expand_mode = 1
+
+[node name="CharnelNeutralDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CharnelArrowControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 330.0
+offset_bottom = -7.0
+texture = ExtResource("20_du1ry")
+expand_mode = 1
+
+[node name="CharnelActiveUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CharnelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 186.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = -5.0
+texture = ExtResource("21_srifw")
+expand_mode = 1
+
+[node name="CharnelActiveDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CharnelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = -117.0
+offset_right = 330.0
+offset_bottom = -9.0
+texture = ExtResource("22_mrkh8")
+expand_mode = 1
+
+[node name="CharnelEventGoodArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CharnelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = -119.0
+offset_right = 259.0
+offset_bottom = -6.0
+texture = ExtResource("23_x50eq")
+expand_mode = 1
+
+[node name="CharnelEventBadArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CharnelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 329.0
+offset_bottom = -8.0
+texture = ExtResource("24_371qs")
+expand_mode = 1
+
+[node name="ArbelArrowControl" type="Control" parent="StockMarketControl/ArrowControl"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 410.0
+offset_top = 769.0
+offset_right = 450.0
+offset_bottom = 809.0
+
+[node name="ArbelNeutralUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/ArbelArrowControl"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -119.0
+offset_right = 258.0
+offset_bottom = -7.0
+texture = ExtResource("19_pnepw")
+expand_mode = 1
+
+[node name="ArbelNeutralDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/ArbelArrowControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 330.0
+offset_bottom = -7.0
+texture = ExtResource("20_du1ry")
+expand_mode = 1
+
+[node name="ArbelActiveUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/ArbelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 186.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = -5.0
+texture = ExtResource("21_srifw")
+expand_mode = 1
+
+[node name="ArbelActiveDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/ArbelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = -117.0
+offset_right = 330.0
+offset_bottom = -9.0
+texture = ExtResource("22_mrkh8")
+expand_mode = 1
+
+[node name="ArbelEventGoodArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/ArbelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = -119.0
+offset_right = 259.0
+offset_bottom = -6.0
+texture = ExtResource("23_x50eq")
+expand_mode = 1
+
+[node name="ArbelEventBadArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/ArbelArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 329.0
+offset_bottom = -8.0
+texture = ExtResource("24_371qs")
+expand_mode = 1
+
+[node name="CorvusArrowControl" type="Control" parent="StockMarketControl/ArrowControl"]
+anchors_preset = 0
+offset_left = 28.0
+offset_top = 770.0
+offset_right = 68.0
+offset_bottom = 810.0
+
+[node name="CorvusNeutralUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CorvusArrowControl"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -119.0
+offset_right = 258.0
+offset_bottom = -7.0
+texture = ExtResource("19_pnepw")
+expand_mode = 1
+
+[node name="CorvusNeutralDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CorvusArrowControl"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 330.0
+offset_bottom = -7.0
+texture = ExtResource("20_du1ry")
+expand_mode = 1
+
+[node name="CorvusActiveUpArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CorvusArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 186.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = -5.0
+texture = ExtResource("21_srifw")
+expand_mode = 1
+
+[node name="CorvusActiveDownArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CorvusArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = -117.0
+offset_right = 330.0
+offset_bottom = -9.0
+texture = ExtResource("22_mrkh8")
+expand_mode = 1
+
+[node name="CorvusEventGoodArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CorvusArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = -119.0
+offset_right = 259.0
+offset_bottom = -6.0
+texture = ExtResource("23_x50eq")
+expand_mode = 1
+
+[node name="CorvusEventBadArrow" type="TextureRect" parent="StockMarketControl/ArrowControl/CorvusArrowControl"]
+visible = false
+layout_mode = 0
+offset_left = 259.0
+offset_top = -119.0
+offset_right = 329.0
+offset_bottom = -8.0
+texture = ExtResource("24_371qs")
+expand_mode = 1
+
+[node name="Stock1Panel" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 770.0
+offset_right = 358.0
+offset_bottom = 969.0
+
+[node name="CorvusStockLabel" type="Label" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Corvus stock"
+horizontal_alignment = 1
+
+[node name="CorvusCurrentPriceLabel" type="Label" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 39.0
+offset_right = 144.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "current
+price:"
+horizontal_alignment = 2
+
+[node name="CorvusCurrentPriceDisplayLabel" type="Label" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 39.0
+offset_right = 323.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CorvusGoToButton" type="Button" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 211.0
+offset_right = 273.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Go to"
+
+[node name="CorvusAmountOwnedStockMarket" type="Label" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 117.0
+offset_right = 144.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Amount
+Owned:"
+
+[node name="CorvusAmountOwnedStockMarketUpdateDisplay" type="Label" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 117.0
+offset_right = 323.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CorvusSellAllButton" type="Button" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 185.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 35
+text = "Sell All"
+
+[node name="CorvusBuyMaxButton" type="Button" parent="StockMarketControl/Stock1Panel"]
+layout_mode = 0
+offset_top = -120.0
+offset_right = 185.0
+offset_bottom = -67.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 33
+text = "Buy Max"
+
+[node name="Stock2Panel" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 769.0
+offset_right = 740.0
+offset_bottom = 968.0
+
+[node name="ArbelStockLabel" type="Label" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Arbel stock"
+horizontal_alignment = 1
+
+[node name="ArbelCurrentPriceLabel" type="Label" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 39.0
+offset_right = 144.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "current
+price:"
+horizontal_alignment = 2
+
+[node name="ArbelCurrentPriceDisplayLabel" type="Label" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 39.0
+offset_right = 323.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArbelGoToButton" type="Button" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 211.0
+offset_right = 273.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Go to"
+
+[node name="ArbelAmountOwnedStockMarket" type="Label" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 117.0
+offset_right = 144.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Amount
+Owned:"
+
+[node name="ArbelAmountOwnedStockMarketUpdateDisplay" type="Label" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 117.0
+offset_right = 323.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArbelSellAllButton" type="Button" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 185.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 35
+text = "Sell All"
+
+[node name="ArbelBuyMaxButton" type="Button" parent="StockMarketControl/Stock2Panel"]
+layout_mode = 0
+offset_top = -120.0
+offset_right = 185.0
+offset_bottom = -67.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 33
+text = "Buy Max"
+
+[node name="Stock3Panel" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 769.0
+offset_right = 1126.0
+offset_bottom = 968.0
+
+[node name="CharnelStockLabel" type="Label" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 38
+text = "Charnel stock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharnelCurrentPriceLabel" type="Label" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 39.0
+offset_right = 144.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "current
+price:"
+horizontal_alignment = 2
+
+[node name="CharnelCurrentPriceDisplayLabel" type="Label" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 39.0
+offset_right = 323.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharnelGoToButton" type="Button" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 211.0
+offset_right = 273.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Go to"
+
+[node name="CharnelAmountOwnedStockMarket" type="Label" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 117.0
+offset_right = 144.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Amount
+Owned:"
+
+[node name="CharnelAmountOwnedStockMarketUpdateDisplay" type="Label" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 117.0
+offset_right = 323.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharnelSellAllButton" type="Button" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 185.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 35
+text = "Sell All"
+
+[node name="CharnelBuyMaxButton" type="Button" parent="StockMarketControl/Stock3Panel"]
+layout_mode = 0
+offset_top = -120.0
+offset_right = 185.0
+offset_bottom = -67.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 33
+text = "Buy Max"
+
+[node name="Stock4Panel" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 769.0
+offset_right = 1506.0
+offset_bottom = 968.0
+
+[node name="EbkalStockLabel" type="Label" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Ebkal stock"
+horizontal_alignment = 1
+
+[node name="EbkalCurrentPriceLabel" type="Label" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 39.0
+offset_right = 144.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "current
+price:"
+horizontal_alignment = 2
+
+[node name="EbkalCurrentPriceDisplayLabel" type="Label" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 39.0
+offset_right = 323.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EbkalGoToButton" type="Button" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 211.0
+offset_right = 273.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Go to"
+
+[node name="EbkalAmountOwnedStockMarket" type="Label" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 117.0
+offset_right = 144.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Amount
+Owned:"
+
+[node name="EbkalAmountOwnedStockMarketUpdateDisplay" type="Label" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 117.0
+offset_right = 323.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EbkalSellAllButton" type="Button" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 185.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 35
+text = "Sell All"
+
+[node name="EbkalBuyMaxButton" type="Button" parent="StockMarketControl/Stock4Panel"]
+layout_mode = 0
+offset_top = -120.0
+offset_right = 185.0
+offset_bottom = -67.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 33
+text = "Buy Max"
+
+[node name="Stock5Panel" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 1559.0
+offset_top = 768.0
+offset_right = 1889.0
+offset_bottom = 967.0
+
+[node name="GirnnStockLabel" type="Label" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Girnn stock"
+horizontal_alignment = 1
+
+[node name="GirnnCurrentPriceLabel" type="Label" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 39.0
+offset_right = 144.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "current
+price:"
+horizontal_alignment = 2
+
+[node name="GirnnCurrentPriceDisplayLabel" type="Label" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 39.0
+offset_right = 323.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GirnnGoToButton" type="Button" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 211.0
+offset_right = 273.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Go to"
+
+[node name="GirnnAmountOwnedStockMarket" type="Label" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 117.0
+offset_right = 144.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Amount
+Owned:"
+
+[node name="GirnnAmountOwnedStockMarketUpdateDisplay" type="Label" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 117.0
+offset_right = 323.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GirnnSellAllButton" type="Button" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 185.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 35
+text = "Sell All"
+
+[node name="GirnnBuyMaxButton" type="Button" parent="StockMarketControl/Stock5Panel"]
+layout_mode = 0
+offset_top = -120.0
+offset_right = 185.0
+offset_bottom = -67.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 33
+text = "Buy Max"
+
+[node name="CashDisplay" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 73.0
+offset_right = 1905.0
+offset_bottom = 195.0
+
+[node name="CashTotalLabel" type="Label" parent="StockMarketControl/CashDisplay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 216.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash Total:"
+
+[node name="MoneyLabel" type="Label" parent="StockMarketControl/CashDisplay"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 1612.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+
+[node name="StockMarketNotificationDisplayPanel" type="Panel" parent="StockMarketControl"]
+visible = false
+layout_mode = 0
+offset_left = 244.0
+offset_top = 326.0
+offset_right = 1050.0
+offset_bottom = 440.0
+script = ExtResource("18_sevyd")
+
+[node name="StockMarketNotificationLabel" type="Label" parent="StockMarketControl/StockMarketNotificationDisplayPanel"]
+layout_mode = 0
+offset_right = 754.0
+offset_bottom = 114.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
+
+[node name="StockMarketNotificationCloseButton" type="TextureButton" parent="StockMarketControl/StockMarketNotificationDisplayPanel"]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 1.0
+offset_right = 805.0
+offset_bottom = 51.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="StockMarketNotificationClosePanel" type="Panel" parent="StockMarketControl/StockMarketNotificationDisplayPanel/StockMarketNotificationCloseButton"]
+visible = false
+layout_mode = 0
+offset_left = -49.0
+offset_top = 116.0
+offset_right = 53.0
+offset_bottom = 150.0
+
+[node name="StockMarketNotificationCloseLabel" type="Label" parent="StockMarketControl/StockMarketNotificationDisplayPanel/StockMarketNotificationCloseButton/StockMarketNotificationClosePanel"]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "close"
+
+[node name="EventCountPanel" type="Panel" parent="StockMarketControl"]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 326.0
+offset_right = 237.0
+offset_bottom = 479.0
+
+[node name="EventCountLabel" type="Label" parent="StockMarketControl/EventCountPanel"]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Event Timer"
+
+[node name="EventCountTimerLabel" type="Label" parent="StockMarketControl/EventCountPanel"]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 220.0
+offset_bottom = 153.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="SellAllStocksButton" type="Button" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 489.0
+offset_right = 314.0
+offset_bottom = 551.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Sell All Stocks"
+
+[node name="StockInvestmentPanel" type="Panel" parent="StockMarketControl"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 204.0
+offset_right = 1905.0
+offset_bottom = 318.0
+
+[node name="StockInvestmentTotalLabel" type="Label" parent="StockMarketControl/StockInvestmentPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 216.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Investment Total:"
+
+[node name="InvestmentLabel" type="Label" parent="StockMarketControl/StockInvestmentPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 1612.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+
+[node name="GroupStocks" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_hhaod")
+
+[node name="Stock1" type="Control" parent="GroupStocks"]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 3066.0
+offset_right = 55.0
+offset_bottom = 3117.0
+
+[node name="Stock1Background" type="Sprite2D" parent="GroupStocks/Stock1"]
+position = Vector2(1140.5, 723.75)
+scale = Vector2(1.15481, 1.25608)
+texture = ExtResource("18_w3el2")
+
+[node name="Stock1Camera" type="Camera2D" parent="GroupStocks/Stock1"]
+offset = Vector2(1100, 700)
+
+[node name="GoToGameMenu" type="Button" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 189.0
+offset_right = 395.0
+offset_bottom = 311.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "go to
+Game menu"
+
+[node name="GoToShopMenu" type="Button" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 320.0
+offset_right = 395.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+Shop Menu"
+
+[node name="GoToStockMarket" type="Button" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 446.0
+offset_right = 395.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock 
+market"
+
+[node name="CorvusStockMainPanel" type="Panel" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 189.0
+offset_right = 1209.0
+offset_bottom = 556.0
+
+[node name="CorvusStockTitlePanel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_right = 476.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Corvus stock"
+
+[node name="CorvusStockMainPriceLabel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 197.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Current
+price:"
+
+[node name="CorvusStockMainUpdatingPriceLabel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 63.0
+offset_right = 398.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CorvusChangeLabel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 197.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Previous
+Change:"
+
+[node name="CorvusChangeUpdatingLabel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 164.0
+offset_right = 398.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CorvusAmountOwnedLabel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 268.0
+offset_right = 197.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Amount
+Owned:"
+
+[node name="CorvusAmountOwnedUpdatingLabel" type="Label" parent="GroupStocks/Stock1/CorvusStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 268.0
+offset_right = 398.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseCorvus" type="Button" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 576.0
+offset_right = 619.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Purchase 
+Corvus Stock"
+
+[node name="SellCorvus" type="Button" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 576.0
+offset_right = 1085.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Sell
+Corvus Stock"
+
+[node name="Stock1Graph" type="Panel" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 576.0
+offset_right = 2025.0
+offset_bottom = 1168.0
+
+[node name="Stock1GraphNode" type="Node2D" parent="GroupStocks/Stock1/Stock1Graph"]
+position = Vector2(60, 554)
+script = ExtResource("20_m73wj")
+
+[node name="Stock1GraphLine" type="Line2D" parent="GroupStocks/Stock1/Stock1Graph/Stock1GraphNode"]
+points = PackedVector2Array(0, 0)
+script = ExtResource("21_cbpbc")
+
+[node name="CorvusXAxisLabel" type="Label" parent="GroupStocks/Stock1/Stock1Graph/Stock1GraphNode/Stock1GraphLine"]
+offset_left = 804.0
+offset_top = 9.0
+offset_right = 844.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="CorvusYAxisLabel" type="Label" parent="GroupStocks/Stock1/Stock1Graph/Stock1GraphNode/Stock1GraphLine"]
+offset_left = -56.0
+offset_top = -504.0
+offset_right = -16.0
+offset_bottom = -481.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="Stock1OriginLabel" type="Label" parent="GroupStocks/Stock1/Stock1Graph"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 547.0
+offset_right = 58.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "(0,0)"
+
+[node name="CashTotalStockPanel" type="Panel" parent="GroupStocks/Stock1"]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 189.0
+offset_right = 2036.0
+offset_bottom = 359.0
+
+[node name="CashTotalStockPanelTitle" type="Label" parent="GroupStocks/Stock1/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 213.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash total"
+
+[node name="CashTotalStockUpdatingPanel" type="Label" parent="GroupStocks/Stock1/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 48.0
+offset_right = 794.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="StockMarketNotificationOutline" type="Sprite2D" parent="GroupStocks/Stock1"]
+visible = false
+position = Vector2(284.5, 500.25)
+scale = Vector2(1.18421, 1.04128)
+texture = ExtResource("23_yt62g")
+
+[node name="CorvusNotificationPanel" type="Panel" parent="GroupStocks/Stock1"]
+visible = false
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 380.0
+offset_right = 2036.0
+offset_bottom = 556.0
+
+[node name="CorvusNotificationTest" type="Label" parent="GroupStocks/Stock1/CorvusNotificationPanel"]
+layout_mode = 0
+offset_right = 805.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Stock1NotificationPanel" type="Panel" parent="GroupStocks/Stock1"]
+visible = false
+layout_mode = 0
+offset_left = 176.0
+offset_top = 745.0
+offset_right = 1084.0
+offset_bottom = 926.0
+
+[node name="Stock1NotificationCloseButton" type="TextureButton" parent="GroupStocks/Stock1/Stock1NotificationPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 57.0
+offset_bottom = 56.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="Stock1NotificationLabel" type="Label" parent="GroupStocks/Stock1/Stock1NotificationPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 908.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Stock1NotificationClosePanel" type="Panel" parent="GroupStocks/Stock1/Stock1NotificationPanel"]
+visible = false
+layout_mode = 0
+offset_top = 187.0
+offset_right = 171.0
+offset_bottom = 241.0
+
+[node name="Stock1NotificationCloseLabel" type="Label" parent="GroupStocks/Stock1/Stock1NotificationPanel/Stock1NotificationClosePanel"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "close"
+
+[node name="Stock2" type="Control" parent="GroupStocks"]
+anchors_preset = 0
+offset_left = 2699.0
+offset_top = 3069.0
+offset_right = 2776.0
+offset_bottom = 3145.0
+
+[node name="Stock2Background" type="Sprite2D" parent="GroupStocks/Stock2"]
+position = Vector2(1116, 719.75)
+scale = Vector2(1.1503, 1.24937)
+texture = ExtResource("18_w3el2")
+
+[node name="Stock2Camera" type="Camera2D" parent="GroupStocks/Stock2"]
+offset = Vector2(1100, 700)
+
+[node name="GoToGameMenu" type="Button" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 189.0
+offset_right = 395.0
+offset_bottom = 311.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "go to
+Game menu"
+
+[node name="GoToShopMenu" type="Button" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 320.0
+offset_right = 395.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+Shop Menu"
+
+[node name="GoToStockMarket" type="Button" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 446.0
+offset_right = 395.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock 
+market"
+
+[node name="ArbelStockMainPanel" type="Panel" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 189.0
+offset_right = 1209.0
+offset_bottom = 556.0
+
+[node name="ArbelStockTitlePanel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_right = 476.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Arbel stock"
+
+[node name="ArbelStockMainPriceLabel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Current
+price:"
+
+[node name="ArbelStockMainUpdatingPriceLabel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 63.0
+offset_right = 398.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArbelChangeLabel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 197.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Previous
+Change:"
+
+[node name="ArbelChangeUpdatingLabel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 164.0
+offset_right = 398.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArbelAmountOwnedLabel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 268.0
+offset_right = 197.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Amount
+Owned:"
+
+[node name="ArbelAmountOwnedUpdatingLabel" type="Label" parent="GroupStocks/Stock2/ArbelStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 268.0
+offset_right = 398.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseArbel" type="Button" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 576.0
+offset_right = 619.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Purchase 
+Arbel Stock"
+
+[node name="SellArbel" type="Button" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 576.0
+offset_right = 1085.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Sell
+Arbel Stock"
+
+[node name="Stock2Graph" type="Panel" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 576.0
+offset_right = 2025.0
+offset_bottom = 1168.0
+
+[node name="Stock2GraphNode" type="Node2D" parent="GroupStocks/Stock2/Stock2Graph"]
+position = Vector2(60, 554)
+script = ExtResource("22_0vxw0")
+
+[node name="Stock2GraphLine" type="Line2D" parent="GroupStocks/Stock2/Stock2Graph/Stock2GraphNode"]
+points = PackedVector2Array(0, 0)
+script = ExtResource("23_jeu7q")
+
+[node name="ArbelXAxisLabel" type="Label" parent="GroupStocks/Stock2/Stock2Graph/Stock2GraphNode/Stock2GraphLine"]
+offset_left = 804.0
+offset_top = 9.0
+offset_right = 844.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="ArbelYAxisLabel" type="Label" parent="GroupStocks/Stock2/Stock2Graph/Stock2GraphNode/Stock2GraphLine"]
+offset_left = -56.0
+offset_top = -504.0
+offset_right = -16.0
+offset_bottom = -481.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="Stock2OriginLabel" type="Label" parent="GroupStocks/Stock2/Stock2Graph"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 547.0
+offset_right = 58.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "(0,0)"
+
+[node name="CashTotalStockPanel" type="Panel" parent="GroupStocks/Stock2"]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 189.0
+offset_right = 2036.0
+offset_bottom = 359.0
+
+[node name="CashTotalStockPanelTitle" type="Label" parent="GroupStocks/Stock2/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 213.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash total"
+
+[node name="CashTotalStockUpdatingPanel" type="Label" parent="GroupStocks/Stock2/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 48.0
+offset_right = 794.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="ArbelNotificationPanel" type="Panel" parent="GroupStocks/Stock2"]
+visible = false
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 380.0
+offset_right = 2036.0
+offset_bottom = 556.0
+
+[node name="ArbelNotificationTest" type="Label" parent="GroupStocks/Stock2/ArbelNotificationPanel"]
+layout_mode = 0
+offset_right = 805.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="StockMarketNotificationOutline" type="Sprite2D" parent="GroupStocks/Stock2"]
+visible = false
+position = Vector2(284.5, 500.25)
+scale = Vector2(1.18421, 1.04128)
+texture = ExtResource("23_yt62g")
+
+[node name="Stock2NotificationPanel" type="Panel" parent="GroupStocks/Stock2"]
+visible = false
+layout_mode = 0
+offset_left = 176.0
+offset_top = 746.0
+offset_right = 1084.0
+offset_bottom = 927.0
+
+[node name="Stock2NotificationCloseButton" type="TextureButton" parent="GroupStocks/Stock2/Stock2NotificationPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 57.0
+offset_bottom = 56.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="Stock2NotificationLabel" type="Label" parent="GroupStocks/Stock2/Stock2NotificationPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 908.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Stock2NotificationClosePanel" type="Panel" parent="GroupStocks/Stock2/Stock2NotificationPanel"]
+visible = false
+layout_mode = 0
+offset_top = 187.0
+offset_right = 171.0
+offset_bottom = 241.0
+
+[node name="Stock2NotificationCloseLabel" type="Label" parent="GroupStocks/Stock2/Stock2NotificationPanel/Stock2NotificationClosePanel"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "close"
+
+[node name="Stock3" type="Control" parent="GroupStocks"]
+anchors_preset = 0
+offset_left = 5584.0
+offset_top = 3061.0
+offset_right = 5639.0
+offset_bottom = 3116.0
+
+[node name="Stock3Background" type="Sprite2D" parent="GroupStocks/Stock3"]
+position = Vector2(1256, 732)
+scale = Vector2(1.27455, 1.24853)
+texture = ExtResource("18_w3el2")
+
+[node name="Stock3Camera" type="Camera2D" parent="GroupStocks/Stock3"]
+offset = Vector2(1100, 700)
+
+[node name="GoToGameMenu" type="Button" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 189.0
+offset_right = 395.0
+offset_bottom = 311.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "go to
+Game menu"
+
+[node name="GoToShopMenu" type="Button" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 320.0
+offset_right = 395.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+Shop Menu"
+
+[node name="GoToStockMarket" type="Button" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 446.0
+offset_right = 395.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock 
+market"
+
+[node name="CharnelStockMainPanel" type="Panel" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 189.0
+offset_right = 1209.0
+offset_bottom = 556.0
+
+[node name="CharnelStockTitlePanel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_right = 476.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Charnel stock"
+
+[node name="CharnelStockMainPriceLabel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Current
+price:"
+
+[node name="CharnelStockMainUpdatingPriceLabel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 63.0
+offset_right = 398.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharnelChangeLabel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 197.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Previous
+Change:"
+
+[node name="CharnelChangeUpdatingLabel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 164.0
+offset_right = 398.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharnelAmountOwnedLabel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 268.0
+offset_right = 197.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Amount
+Owned:"
+
+[node name="CharnelAmountOwnedUpdatingLabel" type="Label" parent="GroupStocks/Stock3/CharnelStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 268.0
+offset_right = 398.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseCharnel" type="Button" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 576.0
+offset_right = 619.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Purchase 
+Charnel Stock"
+
+[node name="SellCharnel" type="Button" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 576.0
+offset_right = 1085.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Sell
+Charnel Stock"
+
+[node name="Stock3Graph" type="Panel" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 576.0
+offset_right = 2025.0
+offset_bottom = 1168.0
+
+[node name="Stock3GraphNode" type="Node2D" parent="GroupStocks/Stock3/Stock3Graph"]
+position = Vector2(60, 554)
+script = ExtResource("24_t2pdl")
+
+[node name="Stock3GraphLine" type="Line2D" parent="GroupStocks/Stock3/Stock3Graph/Stock3GraphNode"]
+points = PackedVector2Array(0, 0)
+script = ExtResource("25_omb0j")
+
+[node name="CharnelXAxisLabel" type="Label" parent="GroupStocks/Stock3/Stock3Graph/Stock3GraphNode/Stock3GraphLine"]
+offset_left = 804.0
+offset_top = 9.0
+offset_right = 844.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="CharnelYAxisLabel" type="Label" parent="GroupStocks/Stock3/Stock3Graph/Stock3GraphNode/Stock3GraphLine"]
+offset_left = -56.0
+offset_top = -504.0
+offset_right = -16.0
+offset_bottom = -481.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="Stock3OriginLabel" type="Label" parent="GroupStocks/Stock3/Stock3Graph"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 547.0
+offset_right = 58.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "(0,0)"
+
+[node name="CashTotalStockPanel" type="Panel" parent="GroupStocks/Stock3"]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 189.0
+offset_right = 2036.0
+offset_bottom = 359.0
+
+[node name="CashTotalStockPanelTitle" type="Label" parent="GroupStocks/Stock3/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 213.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash total"
+
+[node name="CashTotalStockUpdatingPanel" type="Label" parent="GroupStocks/Stock3/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 48.0
+offset_right = 794.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="CharnelNotificationPanel" type="Panel" parent="GroupStocks/Stock3"]
+visible = false
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 380.0
+offset_right = 2036.0
+offset_bottom = 556.0
+
+[node name="CharnelNotificationTest" type="Label" parent="GroupStocks/Stock3/CharnelNotificationPanel"]
+layout_mode = 0
+offset_right = 805.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="StockMarketNotificationOutline" type="Sprite2D" parent="GroupStocks/Stock3"]
+visible = false
+position = Vector2(284.5, 500.25)
+scale = Vector2(1.18421, 1.04128)
+texture = ExtResource("23_yt62g")
+
+[node name="Stock3NotificationPanel" type="Panel" parent="GroupStocks/Stock3"]
+visible = false
+layout_mode = 0
+offset_left = 177.0
+offset_top = 745.0
+offset_right = 1085.0
+offset_bottom = 926.0
+
+[node name="Stock3NotificationCloseButton" type="TextureButton" parent="GroupStocks/Stock3/Stock3NotificationPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 57.0
+offset_bottom = 56.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="Stock3NotificationLabel" type="Label" parent="GroupStocks/Stock3/Stock3NotificationPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 908.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Stock3NotificationClosePanel" type="Panel" parent="GroupStocks/Stock3/Stock3NotificationPanel"]
+visible = false
+layout_mode = 0
+offset_top = 187.0
+offset_right = 171.0
+offset_bottom = 241.0
+
+[node name="Stock3NotificationCloseLabel" type="Label" parent="GroupStocks/Stock3/Stock3NotificationPanel/Stock3NotificationClosePanel"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "close"
+
+[node name="Stock4" type="Control" parent="GroupStocks"]
+anchors_preset = 0
+offset_top = 5105.0
+offset_right = 59.0
+offset_bottom = 5169.0
+
+[node name="Stock4Background" type="Sprite2D" parent="GroupStocks/Stock4"]
+position = Vector2(1157, 736.999)
+scale = Vector2(1.16884, 1.2829)
+texture = ExtResource("18_w3el2")
+
+[node name="Stock4Camera" type="Camera2D" parent="GroupStocks/Stock4"]
+offset = Vector2(1100, 700)
+
+[node name="GoToGameMenu" type="Button" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 189.0
+offset_right = 395.0
+offset_bottom = 311.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "go to
+Game menu"
+
+[node name="GoToShopMenu" type="Button" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 320.0
+offset_right = 395.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+Shop Menu"
+
+[node name="GoToStockMarket" type="Button" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 446.0
+offset_right = 395.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock 
+market"
+
+[node name="EbkalStockMainPanel" type="Panel" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 189.0
+offset_right = 1209.0
+offset_bottom = 556.0
+
+[node name="EbkalStockTitlePanel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_right = 476.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Ebkal stock"
+
+[node name="EbkalStockMainPriceLabel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Current
+price:"
+
+[node name="EbkalStockMainUpdatingPriceLabel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 63.0
+offset_right = 398.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EbkalChangeLabel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 197.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Previous
+Change:"
+
+[node name="EbkalChangeUpdatingLabel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 164.0
+offset_right = 398.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EbkalAmountOwnedLabel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 268.0
+offset_right = 197.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Amount
+Owned:"
+
+[node name="EbkalAmountOwnedUpdatingLabel" type="Label" parent="GroupStocks/Stock4/EbkalStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 268.0
+offset_right = 398.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseEbkal" type="Button" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 576.0
+offset_right = 619.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Purchase 
+Ebkal Stock"
+
+[node name="SellEbkal" type="Button" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 576.0
+offset_right = 1085.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Sell
+Ebkal Stock"
+
+[node name="Stock4Graph" type="Panel" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 576.0
+offset_right = 2025.0
+offset_bottom = 1168.0
+
+[node name="Stock4GraphNode" type="Node2D" parent="GroupStocks/Stock4/Stock4Graph"]
+position = Vector2(60, 554)
+script = ExtResource("26_xypv7")
+
+[node name="Stock4GraphLine" type="Line2D" parent="GroupStocks/Stock4/Stock4Graph/Stock4GraphNode"]
+points = PackedVector2Array(0, 0)
+script = ExtResource("27_yujbh")
+
+[node name="EbkalXAxisLabel" type="Label" parent="GroupStocks/Stock4/Stock4Graph/Stock4GraphNode/Stock4GraphLine"]
+offset_left = 804.0
+offset_top = 9.0
+offset_right = 844.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="EbkalYAxisLabel" type="Label" parent="GroupStocks/Stock4/Stock4Graph/Stock4GraphNode/Stock4GraphLine"]
+offset_left = -56.0
+offset_top = -504.0
+offset_right = -16.0
+offset_bottom = -481.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="Stock4OriginLabel" type="Label" parent="GroupStocks/Stock4/Stock4Graph"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 547.0
+offset_right = 58.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "(0,0)"
+
+[node name="CashTotalStockPanel" type="Panel" parent="GroupStocks/Stock4"]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 189.0
+offset_right = 2036.0
+offset_bottom = 359.0
+
+[node name="CashTotalStockPanelTitle" type="Label" parent="GroupStocks/Stock4/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 213.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash total"
+
+[node name="CashTotalStockUpdatingPanel" type="Label" parent="GroupStocks/Stock4/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 48.0
+offset_right = 794.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="EbkalNotificationPanel" type="Panel" parent="GroupStocks/Stock4"]
+visible = false
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 380.0
+offset_right = 2036.0
+offset_bottom = 556.0
+
+[node name="EbkalNotificationTest" type="Label" parent="GroupStocks/Stock4/EbkalNotificationPanel"]
+layout_mode = 0
+offset_right = 805.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="StockMarketNotificationOutline" type="Sprite2D" parent="GroupStocks/Stock4"]
+visible = false
+position = Vector2(284.5, 500.25)
+scale = Vector2(1.18421, 1.04128)
+texture = ExtResource("23_yt62g")
+
+[node name="Stock4NotificationPanel" type="Panel" parent="GroupStocks/Stock4"]
+visible = false
+layout_mode = 0
+offset_left = 177.0
+offset_top = 742.0
+offset_right = 1085.0
+offset_bottom = 923.0
+
+[node name="Stock4NotificationCloseButton" type="TextureButton" parent="GroupStocks/Stock4/Stock4NotificationPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 57.0
+offset_bottom = 56.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="Stock4NotificationLabel" type="Label" parent="GroupStocks/Stock4/Stock4NotificationPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 908.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Stock4NotificationClosePanel" type="Panel" parent="GroupStocks/Stock4/Stock4NotificationPanel"]
+visible = false
+layout_mode = 0
+offset_top = 187.0
+offset_right = 171.0
+offset_bottom = 241.0
+
+[node name="Stock4NotificationCloseLabel" type="Label" parent="GroupStocks/Stock4/Stock4NotificationPanel/Stock4NotificationClosePanel"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "close"
+
+[node name="Stock5" type="Control" parent="GroupStocks"]
+anchors_preset = 0
+offset_left = 2725.0
+offset_top = 5091.0
+offset_right = 2805.0
+offset_bottom = 5163.0
+
+[node name="Stock5Background" type="Sprite2D" parent="GroupStocks/Stock5"]
+position = Vector2(1100, 750.75)
+scale = Vector2(1.14128, 1.28961)
+texture = ExtResource("18_w3el2")
+
+[node name="Stock5Camera" type="Camera2D" parent="GroupStocks/Stock5"]
+offset = Vector2(1100, 700)
+
+[node name="GoToGameMenu" type="Button" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 189.0
+offset_right = 395.0
+offset_bottom = 311.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "go to
+Game menu"
+
+[node name="GoToShopMenu" type="Button" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 320.0
+offset_right = 395.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+Shop Menu"
+
+[node name="GoToStockMarket" type="Button" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 446.0
+offset_right = 395.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Go to
+stock 
+market"
+
+[node name="GirnnStockMainPanel" type="Panel" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 189.0
+offset_right = 1209.0
+offset_bottom = 556.0
+
+[node name="GirnnStockTitlePanel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_right = 476.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+text = "Girnn stock"
+
+[node name="GirnnStockMainPriceLabel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Current
+price:"
+
+[node name="GirnnStockMainUpdatingPriceLabel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 63.0
+offset_right = 398.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GirnnChangeLabel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 197.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Previous
+Change:"
+
+[node name="GirnnChangeUpdatingLabel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 164.0
+offset_right = 398.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GirnnAmountOwnedLabel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 268.0
+offset_right = 197.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 40
+text = "Amount
+Owned:"
+
+[node name="GirnnAmountOwnedUpdatingLabel" type="Label" parent="GroupStocks/Stock5/GirnnStockMainPanel"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 268.0
+offset_right = 398.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseGirnn" type="Button" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 576.0
+offset_right = 619.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Purchase 
+Girnn Stock"
+
+[node name="SellGirnn" type="Button" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 576.0
+offset_right = 1085.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "Sell
+Girnn Stock"
+
+[node name="Stock5Graph" type="Panel" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 576.0
+offset_right = 2025.0
+offset_bottom = 1168.0
+
+[node name="Stock5GraphNode" type="Node2D" parent="GroupStocks/Stock5/Stock5Graph"]
+position = Vector2(60, 554)
+script = ExtResource("28_mkhl4")
+
+[node name="Stock5GraphLine" type="Line2D" parent="GroupStocks/Stock5/Stock5Graph/Stock5GraphNode"]
+points = PackedVector2Array(0, 0)
+script = ExtResource("29_nbyt7")
+
+[node name="GirnnXAxisLabel" type="Label" parent="GroupStocks/Stock5/Stock5Graph/Stock5GraphNode/Stock5GraphLine"]
+offset_left = 804.0
+offset_top = 9.0
+offset_right = 844.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="GirnnYAxisLabel" type="Label" parent="GroupStocks/Stock5/Stock5Graph/Stock5GraphNode/Stock5GraphLine"]
+offset_left = -56.0
+offset_top = -504.0
+offset_right = -16.0
+offset_bottom = -481.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 15
+
+[node name="Stock5OriginLabel" type="Label" parent="GroupStocks/Stock5/Stock5Graph"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 547.0
+offset_right = 58.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "(0,0)"
+
+[node name="CashTotalStockPanel" type="Panel" parent="GroupStocks/Stock5"]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 189.0
+offset_right = 2036.0
+offset_bottom = 359.0
+
+[node name="CashTotalStockPanelTitle" type="Label" parent="GroupStocks/Stock5/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 213.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+text = "Cash total"
+
+[node name="CashTotalStockUpdatingPanel" type="Label" parent="GroupStocks/Stock5/CashTotalStockPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 48.0
+offset_right = 794.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="GirnnNotificationPanel" type="Panel" parent="GroupStocks/Stock5"]
+visible = false
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 380.0
+offset_right = 2036.0
+offset_bottom = 556.0
+
+[node name="GirnnNotificationTest" type="Label" parent="GroupStocks/Stock5/GirnnNotificationPanel"]
+layout_mode = 0
+offset_right = 805.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="StockMarketNotificationOutline" type="Sprite2D" parent="GroupStocks/Stock5"]
+visible = false
+position = Vector2(284.5, 500.25)
+scale = Vector2(1.18421, 1.04128)
+texture = ExtResource("23_yt62g")
+
+[node name="Stock5NotificationPanel" type="Panel" parent="GroupStocks/Stock5"]
+visible = false
+layout_mode = 0
+offset_left = 177.0
+offset_top = 744.0
+offset_right = 1085.0
+offset_bottom = 925.0
+
+[node name="Stock5NotificationCloseButton" type="TextureButton" parent="GroupStocks/Stock5/Stock5NotificationPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 57.0
+offset_bottom = 56.0
+texture_normal = ExtResource("11_v3gqx")
+
+[node name="Stock5NotificationLabel" type="Label" parent="GroupStocks/Stock5/Stock5NotificationPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 908.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 30
+
+[node name="Stock5NotificationClosePanel" type="Panel" parent="GroupStocks/Stock5/Stock5NotificationPanel"]
+visible = false
+layout_mode = 0
+offset_top = 187.0
+offset_right = 171.0
+offset_bottom = 241.0
+
+[node name="Stock5NotificationCloseLabel" type="Label" parent="GroupStocks/Stock5/Stock5NotificationPanel/Stock5NotificationClosePanel"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("2_gp1vu")
+theme_override_font_sizes/font_size = 50
+text = "close"
+
+[connection signal="pressed" from="GameControl/IncreaseCash" to="GameControl/CashDisplay" method="_on_increase_cash_pressed"]
+[connection signal="pressed" from="GameControl/CashMultiplierIncreaser" to="GameControl/CashDisplay" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="GameControl/GraphTest/GraphTooltip" to="GameControl/GraphTest/GraphTestNode" method="_on_graph_tooltip_mouse_entered"]
+[connection signal="mouse_exited" from="GameControl/GraphTest/GraphTooltip" to="GameControl/GraphTest/GraphTestNode" method="_on_graph_tooltip_mouse_exited"]
+[connection signal="pressed" from="GameControl/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="GameControl/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="mouse_entered" from="GameControl/MainNotificationPanel/MainNotificationButton" to="GameControl/MainNotificationPanel" method="_on_notification_button_mouse_entered"]
+[connection signal="mouse_exited" from="GameControl/MainNotificationPanel/MainNotificationButton" to="GameControl/MainNotificationPanel" method="_on_notification_button_mouse_exited"]
+[connection signal="pressed" from="GameControl/MainNotificationPanel/MainNotificationButton" to="." method="_on_notification_button_pressed"]
+[connection signal="pressed" from="ShopControl/PurchaseBlacksmith" to="ShopControl" method="_on_purchase_blacksmith_pressed"]
+[connection signal="pressed" from="ShopControl/BlacksmithCashGain" to="." method="_on_blacksmith_cash_gain_pressed"]
+[connection signal="pressed" from="ShopControl/PurchasePrintingPress" to="ShopControl" method="_on_purchase_printing_press_pressed"]
+[connection signal="pressed" from="ShopControl/PrintingPressCashGain" to="." method="_on_printing_press_cash_gain_pressed"]
+[connection signal="pressed" from="ShopControl/PurchaseTailor" to="ShopControl" method="_on_purchase_tailor_pressed"]
+[connection signal="pressed" from="ShopControl/TailorCashGain" to="." method="_on_tailor_cash_gain_pressed"]
+[connection signal="pressed" from="ShopControl/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="ShopControl/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="mouse_entered" from="ShopControl/ShopNotificationPanel/ShopNotificationButton" to="ShopControl" method="_on_shop_notification_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopControl/ShopNotificationPanel/ShopNotificationButton" to="ShopControl" method="_on_shop_notification_button_mouse_exited"]
+[connection signal="pressed" from="ShopControl/ShopNotificationPanel/ShopNotificationButton" to="ShopControl" method="_on_shop_notification_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="StockMarketControl/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock1Panel/CorvusGoToButton" to="." method="_on_corvus_go_to_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock1Panel/CorvusSellAllButton" to="StockMarketControl" method="_on_corvus_sell_all_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock1Panel/CorvusBuyMaxButton" to="StockMarketControl" method="_on_corvus_buy_max_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock2Panel/ArbelGoToButton" to="." method="_on_arbel_go_to_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock2Panel/ArbelSellAllButton" to="StockMarketControl" method="_on_arbel_sell_all_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock2Panel/ArbelBuyMaxButton" to="StockMarketControl" method="_on_arbel_buy_max_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock3Panel/CharnelGoToButton" to="." method="_on_charnel_go_to_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock3Panel/CharnelSellAllButton" to="StockMarketControl" method="_on_charnel_sell_all_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock3Panel/CharnelBuyMaxButton" to="StockMarketControl" method="_on_charnel_buy_max_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock4Panel/EbkalGoToButton" to="." method="_on_ebkal_go_to_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock4Panel/EbkalSellAllButton" to="StockMarketControl" method="_on_ebkal_sell_all_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock4Panel/EbkalBuyMaxButton" to="StockMarketControl" method="_on_ebkal_buy_max_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock5Panel/GirnnGoToButton" to="." method="_on_girnn_go_to_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock5Panel/GirnnSellAllButton" to="StockMarketControl" method="_on_girnn_sell_all_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/Stock5Panel/GirnnBuyMaxButton" to="StockMarketControl" method="_on_girnn_buy_max_button_pressed"]
+[connection signal="mouse_entered" from="StockMarketControl/StockMarketNotificationDisplayPanel/StockMarketNotificationCloseButton" to="StockMarketControl/StockMarketNotificationDisplayPanel" method="_on_stock_market_notification_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="StockMarketControl/StockMarketNotificationDisplayPanel/StockMarketNotificationCloseButton" to="StockMarketControl/StockMarketNotificationDisplayPanel" method="_on_stock_market_notification_close_button_mouse_exited"]
+[connection signal="pressed" from="StockMarketControl/StockMarketNotificationDisplayPanel/StockMarketNotificationCloseButton" to="StockMarketControl" method="_on_stock_market_notification_close_button_pressed"]
+[connection signal="pressed" from="StockMarketControl/SellAllStocksButton" to="StockMarketControl" method="_on_sell_all_stocks_button_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock1/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock1/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock1/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock1/PurchaseCorvus" to="GroupStocks" method="_on_purchase_corvus_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock1/SellCorvus" to="GroupStocks" method="_on_sell_corvus_pressed"]
+[connection signal="mouse_entered" from="GroupStocks/Stock1/Stock1NotificationPanel/Stock1NotificationCloseButton" to="GroupStocks" method="_on_stock_1_notification_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="GroupStocks/Stock1/Stock1NotificationPanel/Stock1NotificationCloseButton" to="GroupStocks" method="_on_stock_1_notification_close_button_mouse_exited"]
+[connection signal="pressed" from="GroupStocks/Stock1/Stock1NotificationPanel/Stock1NotificationCloseButton" to="GroupStocks" method="_on_stock_1_notification_close_button_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock2/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock2/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock2/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock2/PurchaseArbel" to="GroupStocks" method="_on_purchase_arbel_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock2/SellArbel" to="GroupStocks" method="_on_sell_arbel_pressed"]
+[connection signal="mouse_entered" from="GroupStocks/Stock2/Stock2NotificationPanel/Stock2NotificationCloseButton" to="GroupStocks" method="_on_stock_2_notification_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="GroupStocks/Stock2/Stock2NotificationPanel/Stock2NotificationCloseButton" to="GroupStocks" method="_on_stock_2_notification_close_button_mouse_exited"]
+[connection signal="pressed" from="GroupStocks/Stock2/Stock2NotificationPanel/Stock2NotificationCloseButton" to="StockMarketControl" method="_on_stock_2_notification_close_button_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock3/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock3/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock3/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock3/PurchaseCharnel" to="GroupStocks" method="_on_purchase_charnel_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock3/SellCharnel" to="GroupStocks" method="_on_sell_charnel_pressed"]
+[connection signal="mouse_entered" from="GroupStocks/Stock3/Stock3NotificationPanel/Stock3NotificationCloseButton" to="GroupStocks" method="_on_stock_3_notification_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="GroupStocks/Stock3/Stock3NotificationPanel/Stock3NotificationCloseButton" to="GroupStocks" method="_on_stock_3_notification_close_button_mouse_exited"]
+[connection signal="pressed" from="GroupStocks/Stock3/Stock3NotificationPanel/Stock3NotificationCloseButton" to="StockMarketControl" method="_on_stock_3_notification_close_button_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock4/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock4/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock4/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock4/PurchaseEbkal" to="GroupStocks" method="_on_purchase_ebkal_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock4/SellEbkal" to="GroupStocks" method="_on_sell_ebkal_pressed"]
+[connection signal="mouse_entered" from="GroupStocks/Stock4/Stock4NotificationPanel/Stock4NotificationCloseButton" to="GroupStocks" method="_on_stock_4_notification_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="GroupStocks/Stock4/Stock4NotificationPanel/Stock4NotificationCloseButton" to="GroupStocks" method="_on_stock_4_notification_close_button_mouse_exited"]
+[connection signal="pressed" from="GroupStocks/Stock4/Stock4NotificationPanel/Stock4NotificationCloseButton" to="StockMarketControl" method="_on_stock_4_notification_close_button_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock5/GoToGameMenu" to="." method="_on_go_to_game_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock5/GoToShopMenu" to="." method="_on_go_to_shop_menu_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock5/GoToStockMarket" to="." method="_on_go_to_stock_market_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock5/PurchaseGirnn" to="GroupStocks" method="_on_purchase_girnn_pressed"]
+[connection signal="pressed" from="GroupStocks/Stock5/SellGirnn" to="GroupStocks" method="_on_sell_girnn_pressed"]
+[connection signal="mouse_entered" from="GroupStocks/Stock5/Stock5NotificationPanel/Stock5NotificationCloseButton" to="GroupStocks" method="_on_stock_5_notification_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="GroupStocks/Stock5/Stock5NotificationPanel/Stock5NotificationCloseButton" to="GroupStocks" method="_on_stock_5_notification_close_button_mouse_exited"]
+[connection signal="pressed" from="GroupStocks/Stock5/Stock5NotificationPanel/Stock5NotificationCloseButton" to="GroupStocks" method="_on_stock_5_notification_close_button_pressed"]
